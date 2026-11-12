@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer | CareerLens AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">✦ CareerLens <span>AI</span></div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/features">Features</a>
+            <a href="/analyzer" class="active-link">Resume Analyzer</a>
+        </div>
+
+        <a href="/analyzer" class="nav-button">Get Started ↗</a>
+    </nav>
+
+    <section class="analyzer-page">
+        <div class="analyzer-heading">
+            <span class="section-tag">AI POWERED ANALYSIS</span>
+            <h1>Analyze Your <span>Resume</span></h1>
+            <p>Upload your resume and add a job description to discover how well your profile matches the opportunity.</p>
+        </div>
+
+        <form action="/analyze" method="POST" enctype="multipart/form-data"
+              class="analyzer-form">
+
+            <div class="upload-box">
+                <div class="upload-icon">↑</div>
+                <h2>Upload Your Resume</h2>
+                <p>Select your resume in PDF or DOCX format.</p>
+
+                <input type="file" name="resume"
+                       accept=".pdf,.docx" required>
+            </div>
+
+            <div class="job-description">
+                <label for="job_description">Job Description</label>
+                <textarea id="job_description"
+                          name="job_description"
+                          rows="8"
+                          placeholder="Paste the job description here..."
+                          required></textarea>
+            </div>
+
+            <button type="submit" class="analyze-button">
+                Analyze My Resume →
+            </button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 CareerLens AI. Built to help you grow your career.</p>
+    </footer>
+
+</body>
+</html>

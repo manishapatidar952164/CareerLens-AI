@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerLens AI - Smart Resume Analyzer</title>
+
+    <meta name="description"
+          content="Analyze your resume, discover skill gaps and improve your career opportunities with CareerLens AI.">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">✦</span>
+            <span>CareerLens <span class="brand-ai">AI</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/features">Features</a>
+            <a href="/analyzer">Resume Analyzer</a>
+        </div>
+        <a href="/analyzer" class="nav-button">Get Started ↗</a>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <span class="status-dot"></span>
+                AI-POWERED CAREER PLATFORM
+            </div>
+
+            <h1>
+                Your Next Career Move
+                <span>Starts With a Better Resume.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover your resume strengths, identify missing skills
+                and understand how well your profile matches your dream job.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#analyzer" class="primary-button">
+                    Analyze My Resume <span>→</span>
+                </a>
+
+                <a href="#features" class="secondary-button">
+                    Explore Features
+                </a>
+            </div>
+
+            <div class="trust-line">
+                <span>✓</span> Smart Resume Analysis
+                <span>✓</span> Skill Gap Detection
+                <span>✓</span> Career Insights
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-card">
+
+                <div class="visual-top">
+                    <span class="visual-icon">✦</span>
+                    <div>
+                        <strong>CareerLens AI</strong>
+                        <p>Resume Intelligence</p>
+                    </div>
+                    <span class="live-tag">● LIVE</span>
+                </div>
+
+                <div class="visual-divider"></div>
+
+                <p class="visual-label">YOUR CAREER JOURNEY</p>
+
+                <div class="visual-highlight">
+                    <span class="highlight-icon">✧</span>
+                    <div>
+                        <strong>Know Your Potential</strong>
+                        <p>Discover your professional strengths.</p>
+                    </div>
+                </div>
+
+                <div class="visual-highlight">
+                    <span class="highlight-icon">⌕</span>
+                    <div>
+                        <strong>Find Skill Gaps</strong>
+                        <p>Understand what skills you can improve.</p>
+                    </div>
+                </div>
+
+                <div class="visual-highlight">
+                    <span class="highlight-icon">↗</span>
+                    <div>
+                        <strong>Move Forward</strong>
+                        <p>Build a stronger career profile.</p>
+                    </div>
+                </div>
+
+                <div class="visual-footer">
+                    <span>Powered by intelligent analysis</span>
+                    <span>✦ AI</span>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+            <span class="section-tag">WHAT WE OFFER</span>
+            <h2>Everything You Need to Improve Your Resume</h2>
+            <p>Smart insights to help you prepare for your next opportunity.</p>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon purple">⌕</div>
+                <h3>Resume Analysis</h3>
+                <p>Extract and understand important information from your resume.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon pink">◎</div>
+                <h3>Skill Matching</h3>
+                <p>Compare your resume skills with the requirements of a job.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon blue">✧</div>
+                <h3>Skill Gap Detection</h3>
+                <p>Discover skills mentioned in a job description but missing from your resume.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon orange">↗</div>
+                <h3>Career Insights</h3>
+                <p>Get useful suggestions to improve your professional profile.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESUME ANALYZER -->
+    <section class="analyzer-section" id="analyzer">
+
+        <div class="section-heading">
+            <span class="section-tag">START YOUR ANALYSIS</span>
+            <h2>Let's Make Your Resume Stronger</h2>
+            <p>Upload your resume and provide the job description to get started.</p>
+        </div>
+
+        <div class="analyzer-card">
+
+            <form action="/analyze" method="POST"
+                  enctype="multipart/form-data" id="resumeForm">
+
+                <div class="form-header">
+                    <div>
+                        <h3>Resume Analyzer</h3>
+                        <p>Complete both steps to begin your analysis.</p>
+                    </div>
+                    <span class="secure-tag">✦ Smart Analysis</span>
+                </div>
+
+                <!-- RESUME UPLOAD -->
+                <div class="form-group">
+
+                    <label>01. Upload Your Resume</label>
+
+                    <label for="resume" class="upload-box" id="dropArea">
+
+                        <div class="upload-icon">↑</div>
+
+                        <h3>Drag & Drop your resume here</h3>
+
+                        <p>or <span>browse files</span> from your device</p>
+
+                        <small>Supported formats: PDF, DOCX</small>
+                    </label>
+
+                    <input type="file"
+                           name="resume"
+                           id="resume"
+                           accept=".pdf,.docx"
+                           required>
+
+                    <div class="file-info" id="fileInfo">
+                        <span>📄</span>
+                        <span id="fileName">No file selected</span>
+                        <button type="button" id="removeFile"
+                                aria-label="Remove selected file">✕</button>
+                    </div>
+
+                </div>
+
+
+                <!-- JOB DESCRIPTION -->
+                <div class="form-group">
+
+                    <label for="job_description">
+                        02. Paste Job Description
+                    </label>
+
+                    <textarea
+                        name="job_description"
+                        id="job_description"
+                        placeholder="Paste the job description here...
+
+Example:
+We are looking for a Python Developer with knowledge of Flask, HTML, CSS and SQL..."
+                        required></textarea>
+
+                    <div class="textarea-footer">
+                        <span>Include job requirements and skills for better comparison.</span>
+                        <span id="charCount">0 characters</span>
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="analyze-button" id="analyzeButton">
+                    Analyze My Resume <span>→</span>
+                </button>
+
+                <p class="privacy-note">
+                    Your resume is processed for analysis. Avoid uploading
+                    sensitive personal information.
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <a href="/" class="brand footer-brand">
+            <span class="brand-icon">✦</span>
+            <span>CareerLens <span class="brand-ai">AI</span></span>
+        </a>
+
+        <p>Helping you understand your potential and build your future.</p>
+
+        <div class="footer-bottom">
+            <span>© 2026 CareerLens AI. All rights reserved.</span>
+            <span>Built with Python & Flask</span>
+        </div>
+
+    </footer>
+
+
+    <!-- FRONTEND INTERACTIONS -->
+    <script>
+
+        const resumeInput = document.getElementById("resume");
+        const dropArea = document.getElementById("dropArea");
+        const fileInfo = document.getElementById("fileInfo");
+        const fileName = document.getElementById("fileName");
+        const removeFile = document.getElementById("removeFile");
+        const jobDescription = document.getElementById("job_description");
+        const charCount = document.getElementById("charCount");
+        const resumeForm = document.getElementById("resumeForm");
+        const analyzeButton = document.getElementById("analyzeButton");
+
+        function showFile(file) {
+
+            if (!file) return;
+
+            const extension = file.name.split(".").pop().toLowerCase();
+
+            if (!["pdf", "docx"].includes(extension)) {
+                alert("Please upload a PDF or DOCX file.");
+                resumeInput.value = "";
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                alert("File size must be 5 MB or less.");
+                resumeInput.value = "";
+                return;
+            }
+
+            fileName.textContent = file.name;
+            fileInfo.classList.add("show");
+        }
+
+        resumeInput.addEventListener("change", function () {
+            showFile(this.files[0]);
+        });
+
+        removeFile.addEventListener("click", function () {
+            resumeInput.value = "";
+            fileInfo.classList.remove("show");
+            fileName.textContent = "No file selected";
+        });
+
+        ["dragenter", "dragover"].forEach(event => {
+            dropArea.addEventListener(event, function (e) {
+                e.preventDefault();
+                dropArea.classList.add("drag-active");
+            });
+        });
+
+        ["dragleave", "drop"].forEach(event => {
+            dropArea.addEventListener(event, function (e) {
+                e.preventDefault();
+                dropArea.classList.remove("drag-active");
+            });
+        });
+
+        dropArea.addEventListener("drop", function (e) {
+            const files = e.dataTransfer.files;
+
+            if (files.length > 0) {
+                const transfer = new DataTransfer();
+                transfer.items.add(files[0]);
+                resumeInput.files = transfer.files;
+                showFile(files[0]);
+            }
+        });
+
+        jobDescription.addEventListener("input", function () {
+            charCount.textContent =
+                this.value.length + " characters";
+        });
+
+        resumeForm.addEventListener("submit", function (e) {
+
+            if (!resumeInput.files.length) {
+                e.preventDefault();
+                alert("Please upload your resume first.");
+                return;
+            }
+
+            if (!jobDescription.value.trim()) {
+                e.preventDefault();
+                alert("Please enter a job description.");
+                return;
+            }
+
+            analyzeButton.disabled = true;
+            analyzeButton.innerHTML = "Uploading Resume...";
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Report | CareerLens AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">✦ CareerLens <span>AI</span></div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/features">Features</a>
+        <a href="/analyzer">Resume Analyzer</a>
+    </div>
+
+    <a href="/analyzer" class="nav-button">Analyze Again ↗</a>
+
+</nav>
+
+
+<main class="result-page">
+
+    <!-- PAGE HEADING -->
+    <section class="result-heading">
+
+        <span class="section-tag">AI ANALYSIS REPORT</span>
+
+        <h1>Your Resume <span>Analysis</span></h1>
+
+        <p>
+            Here is your personalized resume evaluation
+            and job compatibility report.
+        </p>
+
+        <span class="complete-badge">
+            ✓ Analysis Complete
+        </span>
+
+    </section>
+
+
+    <!-- MATCH SCORE -->
+    <section class="result-card score-card">
+
+        <div>
+
+            <span class="card-label">
+                YOUR RESUME MATCH SCORE
+            </span>
+
+            <h2>Strong Candidate Profile</h2>
+
+            <p>
+                Your resume has been evaluated against the job description.
+            </p>
+
+        </div>
+        <div class="score-circle"
+     style="--score: {{ match_percentage * 3.6 }}deg;">
+
+    <div class="score-inner">
+        <strong>{{ match_percentage }}%</strong>
+        <span>Match Score</span>
+    </div>
+        
+        </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+    <section class="stats-grid">
+
+        <div class="result-card stat-card">
+
+            <span class="stat-icon">✓</span>
+
+            <h2>{{ matched_skills|length }}</h2>
+
+            <p>Matched Skills</p>
+
+        </div>
+
+
+        <div class="result-card stat-card">
+
+            <span class="stat-icon missing-icon">!</span>
+
+            <h2>{{ missing_skills|length }}</h2>
+
+            <p>Missing Skills</p>
+
+        </div>
+
+
+        <div class="result-card stat-card">
+
+            <span class="stat-icon">★</span>
+
+            <h2>{{ resume_strength }}</h2>
+
+            <p>Resume Strength</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS ANALYSIS -->
+    <section class="result-card skills-card">
+
+        <h2>Skills Analysis</h2>
+
+        <p class="section-description">
+            Understand how your skills align with the job requirements.
+        </p>
+
+        <div class="skills-columns">
+
+            <!-- MATCHED SKILLS -->
+            <div>
+
+                <h3 class="matched-heading">
+                    ✓ Matched Skills
+                </h3>
+
+                <div class="skill-list">
+
+                    {% for skill in matched_skills %}
+
+                        <span class="skill-tag matched-tag">
+                            {{ skill }}
+                        </span>
+
+                    {% else %}
+
+                        <p>No matching skills found.</p>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <!-- MISSING SKILLS -->
+            <div>
+
+                <h3 class="missing-heading">
+                    ! Missing Skills
+                </h3>
+
+                <div class="skill-list">
+
+                    {% for skill in missing_skills %}
+
+                        <span class="skill-tag missing-tag">
+                            {{ skill }}
+                        </span>
+
+                    {% else %}
+
+                        <p>No missing skills found.</p>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI RESUME INSIGHTS -->
+    <section class="result-card insights-card">
+
+        <h2>AI Resume Insights</h2>
+
+        <p class="section-description">
+            Personalized observations based on your resume.
+        </p>
+
+
+        <div class="insight-item">
+
+            <span>✦</span>
+
+            <div>
+
+                <h3>Resume Strengths</h3>
+
+                <p>{{ strengths }}</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="insight-item">
+
+            <span>↗</span>
+
+            <div>
+
+                <h3>Areas to Improve</h3>
+
+                <p>{{ improvements }}</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI RECOMMENDATIONS -->
+    <section class="result-card recommendations-card">
+
+        <h2>AI Recommendations</h2>
+
+        <p class="section-description">
+            Suggestions to make your resume more effective.
+        </p>
+
+        <ul>
+
+            {% for recommendation in recommendations %}
+
+                <li>{{ recommendation }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </section>
+
+
+    <!-- ACTION BUTTON -->
+    <div class="result-actions">
+
+        <a href="/analyzer" class="analyze-button">
+            Analyze Another Resume →
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <p>
+        © 2026 CareerLens AI. Built to help you grow your career.
+    </p>
+
+</footer>
+
+
+</body>
+</html>
